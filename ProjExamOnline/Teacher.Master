@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Teacher.master.cs" Inherits="ProjExamOnline.Teacher" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Online Examination | Teacher </title>
+    <link rel="icon" type="image/png" href="image/Slack_App_Icon.png" sizes="64x64">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.stickyheader.css" type="text/css" />
+    <link rel="stylesheet" href="prettify/prettify.css" type="text/css" />
+
+    <script type="text/javascript" src="prettify/prettify.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    <script type="text/javascript" src="js/detectizr.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+    <script>
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <style>
+        .no-js #loader {
+            display: none;
+        }
+
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="se-pre-con">
+        </div>
+        <div id="masterDiv" runat="server"></div>
+        <div class="mainwrapper">
+            <div class="stickyheader">
+                <div class="stickyheaderinner">
+                    <div class="leftpanel">
+                        <div class="logopanel">
+                            <h1 align="center">Online Exam
+                            </h1>
+                        </div>
+                        <!--logopanel-->
+                    </div>
+                    <div class="rightpanel">
+                        <div class="headerpanel">
+                            <a href="" class="showmenu"></a>
+                            <div class="headerright">                                
+                                <!--dropdown-->
+                                <div class="dropdown userinfo">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="http://demo.themepixels.com/page.html">Hello ,
+                                    <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">                                        
+                                        <li class="divider"></li>
+                                        <li><a href="logout.aspx"><span class="icon-off"></span>Sign Out</a></li>
+                                    </ul>
+                                </div>
+                                <!--dropdown-->
+                            </div>
+                            <!--headerright-->
+                        </div>
+                        <!--headerpanel-->
+                    </div>
+                    <!--rightpanel-->
+                </div>
+                <!--stickyheaderinner-->
+            </div>
+            <!--stickyheader-->
+            <!-- START OF LEFT PANEL -->
+            <div class="leftpanel">
+                <div class="datewidget">
+                </div>                
+                <div class="leftmenu">
+                    <b>
+                        <ul class="nav nav-tabs nav-stacked">
+                            <li class="nav-header">Main Navigation</li>
+                            <li><a href="T_Dashboard.aspx"><span class="icon-align-justify"></span>Dashboard</a></li>
+
+
+
+                            <li class="dropdown"><a href="#"><span class="icon-briefcase"></span>Question Master</a>
+                                <ul>
+                                    <li><a href="T_AddQueBankMst.aspx">Add QuestionBank</a></li>
+                                    <li><a href="#">Add Question </a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown"><a href="#"><span class="icon-briefcase"></span>Paper Master</a>
+                                <ul>
+                                    <li><a href="#">Add PaperType</a></li>
+                                    <li><a href="#">Add Ques to Paper </a></li>
+                                    <li><a href="#">Assign Paper</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown"><a href="#"><span class="icon-briefcase"></span>Result</a>
+                                <ul>
+                                    <li><a href="#">Students Result</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </b>
+                </div>
+                <!--leftmenu-->
+            </div>
+            <!--mainleft-->
+            <!-- END OF LEFT PANEL -->
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <div class="clearfix">
+                </div>
+                <div class="footer">
+                    <div class="footerleft">
+                        Online Examination system
+                    </div>
+                    <div class="footerright">
+                        <marquee behavior="ALTERNATE">
+                        <font size="2" color="white">Copyright © 2020 Online Examination system developed by <a style="color:white;" href="https://github.com/AniketRana" target="_blank" >Aniket Rana </a> All Rights Reserved.</font>
+                        </marquee>
+                    </div>                    
+                </div>
+                <!--footer-->
+            </div>
+        </div>
+    </form>
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+</body>
+</html>
