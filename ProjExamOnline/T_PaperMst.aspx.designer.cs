@@ -10,7 +10,7 @@
 namespace ProjExamOnline {
     
     
-    public partial class T_AddQuesDetails {
+    public partial class T_PaperMst {
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -58,76 +58,22 @@ namespace ProjExamOnline {
         protected global::System.Web.UI.WebControls.Panel pnlform;
         
         /// <summary>
-        /// ddlSubject control.
+        /// txtQpid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubject;
+        protected global::System.Web.UI.WebControls.TextBox txtQpid;
         
         /// <summary>
-        /// hdQdid control.
+        /// txtPaperType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdQdid;
-        
-        /// <summary>
-        /// txtQuestion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuestion;
-        
-        /// <summary>
-        /// txtAns1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAns1;
-        
-        /// <summary>
-        /// txtAns2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAns2;
-        
-        /// <summary>
-        /// txtAns3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAns3;
-        
-        /// <summary>
-        /// txtAns4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAns4;
-        
-        /// <summary>
-        /// ddlCorrectAns control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCorrectAns;
+        protected global::System.Web.UI.WebControls.TextBox txtPaperType;
         
         /// <summary>
         /// btnsubmit control.
@@ -184,12 +130,12 @@ namespace ProjExamOnline {
         protected global::System.Web.UI.WebControls.Label lblerr;
         
         /// <summary>
-        /// grvAddQues control.
+        /// grvQuesPaperMst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvAddQues;
+        protected global::System.Web.UI.WebControls.GridView grvQuesPaperMst;
     }
 }

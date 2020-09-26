@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccessLayer\DAL_tblQuesBankDetails.cs" />
+    <Compile Include="DataAccessLayer\DAL_tblQuestionPaperMst.cs" />
     <Compile Include="DataAccessLayer\DAL_tblQuesBankMst.cs" />
     <Compile Include="DataAccessLayer\DAL_tblUser.cs" />
     <Compile Include="ObjectLayer\tblAssignPaperResult.cs" />

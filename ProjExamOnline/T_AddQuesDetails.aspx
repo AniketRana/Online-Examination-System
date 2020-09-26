@@ -64,6 +64,22 @@
                                     </div>
                                     <div class="par control-group">
                                         <label class="control-label">
+                                            Ans3
+                                        </label>
+                                        <div class="controls">
+                                            <asp:TextBox ID="txtAns3" class="input-xlarge" runat="server"></asp:TextBox>                                            
+                                        </div>
+                                    </div>
+                                     <div class="par control-group">
+                                        <label class="control-label">
+                                            Ans4
+                                        </label>
+                                        <div class="controls">
+                                            <asp:TextBox ID="txtAns4" class="input-xlarge" runat="server"></asp:TextBox>                                            
+                                        </div>
+                                    </div>
+                                    <div class="par control-group">
+                                        <label class="control-label">
                                             Correct Ans
                                         </label>
                                         <div class="controls">
@@ -77,8 +93,8 @@
                                     </div>
                                     
                                     <p class="stdformbutton">
-                                        <asp:Button class="btn btn-primary" ID="btnsubmit" runat="server" Text="Submit" Width="100px"  />
-                                        <asp:Button class="btn btn-danger" ID="btncancel" runat="server" Text="Cancel" Width="100px" />
+                                        <asp:Button class="btn btn-primary" ID="btnsubmit" runat="server" Text="Submit" Width="100px" OnClick="btnsubmit_Click"  />
+                                        <asp:Button class="btn btn-danger" ID="btncancel" runat="server" Text="Cancel" Width="100px" OnClick="btncancel_Click" />
                                         <br>
                                         <br>
                                         <asp:Label Style="color: red; font-size: large;" ID="lblmsg" runat="server" Text=""></asp:Label>
@@ -88,7 +104,7 @@
                             <!--widgetcontent-->
                         </asp:Panel>
                         <asp:Panel ID="pnlgrid" Visible="true" runat="server">                            
-                            <asp:Button ID="btnAddNew" class="btn btn-default" runat="server" Text="Add New Ques" />
+                            <asp:Button ID="btnAddNew" class="btn btn-default" runat="server" OnClick="btnAddNew_Click" Text="Add New Ques" />
                             <br>
                             <br>
                             <br>
@@ -96,24 +112,23 @@
                                 <center>
                                     Add Question Details</center>
 
-                            </h4>
-                            <asp:Label ID="lblerr" runat="server" Style="color: Red;" Text=""></asp:Label>
-                            <div style="height: 630px; width: 100%; overflow: scroll;">
-                                <asp:GridView ID="grvAddQues" runat="server" align="center" AllowPaging="false" AutoGenerateColumns="False" 
-                                    class="table table-bordered" PageSize="10" Width="100%">
-                                    <Columns>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                </h4>
+                                <asp:Label ID="lblerr" runat="server" Style="color: Red;" Text=""></asp:Label>
+                                <div style="height: 630px; width: 100%; overflow: scroll;">
+                                    <asp:GridView ID="grvAddQues" runat="server" align="center" AllowPaging="false" AutoGenerateColumns="False" class="table table-bordered" PageSize="10" Width="100%">
+                                        <Columns>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         QdID</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblQdID" runat="server" Text='<%# Bind("QdID") %>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <%--<asp:TemplateField>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
                                             <HeaderTemplate>
                                                 <center>
                                                         Subject</center>
@@ -121,111 +136,105 @@
                                             <ItemTemplate>
                                                 <center>
                                                         <asp:Label ID="lblSubject" runat="server" Text='<%# Bind("Subject") %>'></asp:Label>
+                                                        <asp:HiddenField ID="hdQid"  Value='<%# Bind("QID") %>' runat="server"></asp:HiddenField>
                                                     </center>
                                             </ItemTemplate>
-                                        </asp:TemplateField>--%>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                        </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Question</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblQuestion" runat="server" Text='<%# Bind("Question")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Ans1</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblAns1" runat="server" Text='<%# Bind("Ans1")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Ans2</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblAns2" runat="server" Text='<%# Bind("Ans2")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Ans3</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblAns3" runat="server" Text='<%# Bind("Ans3")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Ans4</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblAns4" runat="server" Text='<%# Bind("Ans4")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Correct Ans</center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
                                                         <asp:Label ID="lblCorrectAns" runat="server" Text='<%# Bind("CorrectAns")%>'></asp:Label>
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Edit
                                                     </center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
-                                                        <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("QID") %>' 
-                                                            Height="20px" ImageUrl="~/image/Edit.jpg" OnCommand="imgEdit_Command"
-                                                            ToolTip="Edit" Width="20px" />
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
+                                                        <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("QdID") %>' 
+                                                            Height="20px" ImageUrl="~/image/Edit.jpg" OnCommand="imgEdit_Command" ToolTip="Edit" Width="20px" />
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <center>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <center>
                                                         Delete
                                                     </center>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <center>
-                                                        <asp:ImageButton ID="imgDel" runat="server" CommandName='<%# Eval("QID") %>' 
-                                                            Height="20px" ImageUrl="~/image/del.png" OnClientClick="Confirm()" OnCommand="imgDel_Command" 
-                                                            ToolTip="Delete" Width="20px" />
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <center>
+                                                        <asp:ImageButton ID="imgDel" runat="server" CommandName='<%# Eval("QdID") %>'
+                                                            Height="20px" ImageUrl="~/image/del.png" OnClientClick="Confirm()" OnCommand="imgDel_Command" ToolTip="Delete" Width="20px" />
                                                     </center>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
-                                <script type="text/javascript">
-
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                    <script type="text/javascript">
 
                                     function Confirm() {
                                         var confirm_value = "";
@@ -243,8 +252,9 @@
                                         document.forms[0].appendChild(confirm_value);
                                     }
                                 </script>
-                            </div>
-
+                                </div>
+                                
+                            
                         </asp:Panel>
                     </div>
                     <!--contentinner-->

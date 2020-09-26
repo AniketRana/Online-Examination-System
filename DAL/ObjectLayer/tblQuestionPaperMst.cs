@@ -7,6 +7,6 @@ using System.Web;
     {
         public int QPID { get; set; }
         public string PaperType { get; set; }
-        public int TotalQues { get; set; } 
+        //public int TotalQues { get; set; } 
 
     }

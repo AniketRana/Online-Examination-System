@@ -12,10 +12,11 @@ using ProjExamOnline.App_Code.DataAccessLayer;
 
 namespace ProjExamOnline
 {
-    public partial class T_AddQuesDetails : System.Web.UI.Page
+    public partial class T_PaperMst : System.Web.UI.Page
     {
-        tblQuesBankDetails Obj = new tblQuesBankDetails();        
-        DAL_tblQuesBankDetails dal = new DAL_tblQuesBankDetails();             
+
+        tblQuestionPaperMst Obj = new tblQuestionPaperMst();
+        DAL_tblQuestionPaperMst dal = new DAL_tblQuestionPaperMst();
         DataTable dt = new DataTable();
         public static Int16 State = 0;
         string UserName;
@@ -36,7 +37,6 @@ namespace ProjExamOnline
                         pnlform.Visible = false;
                         pnlgrid.Visible = true;
                         FillData();
-                        FillSubjects();
                     }
 
                 }
@@ -45,28 +45,20 @@ namespace ProjExamOnline
             {
                 Response.Redirect("Login.aspx");
             }
-
         }
         public void FillData()
         {
             dt = dal.GetAllData();
-            grvAddQues.DataSource = dt;
-            grvAddQues.DataBind();
+            grvQuesPaperMst.DataSource = dt;
+            grvQuesPaperMst.DataBind();
         }
-        public void FillSubjects()
-        {
-            dt = dal.GetSubject();
-            ddlSubject.DataSource = dt;
-            ddlSubject.DataValueField = "QID";
-            ddlSubject.DataTextField = "Subject";
-            ddlSubject.DataBind();
-        }
+
 
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtQuestion.Text == "" || txtAns1.Text == "" || txtAns2.Text == "" || txtAns3.Text == "" || txtAns4.Text == "")
+                if (txtPaperType.Text == "")
                 {
                     lblmsg.Text = "Please Fill Up All Field . . .";
                     return;
@@ -74,15 +66,8 @@ namespace ProjExamOnline
                 lblmsg.Text = "";
                 if (State == 0)
                 {
-                    
-                    //Obj.QdID= Convert.ToInt32(hdQdid.Value);
-                    Obj.QID= Convert.ToInt32(ddlSubject.SelectedValue.ToString());
-                    Obj.Question = txtQuestion.Text;
-                    Obj.Ans1= txtAns1.Text;
-                    Obj.Ans2= txtAns2.Text;
-                    Obj.Ans3= txtAns3.Text;
-                    Obj.Ans4 = txtAns4.Text;
-                    Obj.CorrectAns = ddlCorrectAns.SelectedValue.ToString();
+                    //Obj.QID = Convert.ToInt32(txtQid.Text);
+                    Obj.PaperType = txtPaperType.Text;
 
                     int flag = dal.Insert(Obj);
 
@@ -97,14 +82,8 @@ namespace ProjExamOnline
                 }
                 if (State == 1)
                 {
-                    Obj.QdID= Convert.ToInt32(hdQdid.Value);
-                    Obj.QID = Convert.ToInt32(ddlSubject.SelectedValue.ToString());
-                    Obj.Question = txtQuestion.Text;
-                    Obj.Ans1 = txtAns1.Text;
-                    Obj.Ans2 = txtAns2.Text;
-                    Obj.Ans3 = txtAns3.Text;
-                    Obj.Ans4 = txtAns4.Text;
-                    Obj.CorrectAns = ddlCorrectAns.SelectedValue.ToString();
+                    Obj.QPID = Convert.ToInt32(txtQpid.Text);
+                    Obj.PaperType = txtPaperType.Text;
 
                     int flag = dal.Update(Obj);
 
@@ -132,6 +111,18 @@ namespace ProjExamOnline
             pnlform.Visible = false;
             pnlgrid.Visible = true;
         }
+        public void Clear()
+        {
+            txtQpid.Text = "";
+            txtPaperType.Text = "";
+        }
+        protected void btnAddNew_Click(object sender, EventArgs e)
+        {
+            State = 0;
+            pnlform.Visible = true;
+            pnlgrid.Visible = false;
+            Clear();
+        }
 
         protected void imgDel_Command(object sender, CommandEventArgs e)
         {
@@ -144,7 +135,7 @@ namespace ProjExamOnline
                 {
                     ImageButton btn = (ImageButton)sender;
                     string CommandName = btn.CommandName;
-                    Obj.QdID = Convert.ToInt16(CommandName);
+                    Obj.QPID = Convert.ToInt16(CommandName);
                     int Flag = dal.Delete(Obj);
                     if (Flag == 1)
                     {
@@ -173,26 +164,13 @@ namespace ProjExamOnline
             {
                 ImageButton btn = (ImageButton)sender;
                 string CommandArgument = btn.CommandArgument;
-                Obj.QdID = Convert.ToInt16(CommandArgument);
+                Obj.QPID = Convert.ToInt16(CommandArgument);
                 dt = dal.GetSingleRecord(Obj);
                 pnlform.Visible = true;
                 pnlgrid.Visible = false;
 
-                hdQdid.Value = dt.Rows[0]["QdID"].ToString().Trim();
-
-                //ddlSubject.Items.FindByText(dt.Rows[0]["Subject"].ToString().Trim());
-                ddlSubject.ClearSelection();
-                ddlSubject.Items.FindByText(dt.Rows[0]["Subject"].ToString().Trim()).Selected = true;
-
-                txtQuestion.Text = dt.Rows[0]["Question"].ToString().Trim();
-                txtAns1.Text = dt.Rows[0]["Ans1"].ToString().Trim();
-                txtAns2.Text = dt.Rows[0]["Ans2"].ToString().Trim();
-                txtAns3.Text = dt.Rows[0]["Ans3"].ToString().Trim();
-                txtAns4.Text = dt.Rows[0]["Ans4"].ToString().Trim();
-                //ddlCorrectAns.SelectedItem.Text = dt.Rows[0]["CorrectAns"].ToString().Trim();
-                                
-                ddlCorrectAns.ClearSelection();
-                ddlCorrectAns.Items.FindByValue(dt.Rows[0]["CorrectAns"].ToString().Trim()).Selected = true;
+                txtQpid.Text = dt.Rows[0]["QPID"].ToString().Trim();
+                txtPaperType.Text = dt.Rows[0]["PaperType"].ToString().Trim();
 
                 State = 1;
             }
@@ -202,25 +180,6 @@ namespace ProjExamOnline
                 //ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('" + "Warning : " + ex.Message.ToString() + "');", true);
                 //throw;
             }
-        }
-
-        protected void btnAddNew_Click(object sender, EventArgs e)
-        {
-            State = 0;
-            pnlform.Visible = true;
-            pnlgrid.Visible = false;
-            Clear();
-        }
-        public void Clear()
-        {
-            hdQdid.Value = "";
-            ddlSubject.SelectedIndex = 0;
-            txtQuestion.Text = "";
-            txtAns1.Text = "";
-            txtAns2.Text = "";
-            txtAns3.Text = "";
-            txtAns4.Text = "";
-            ddlCorrectAns.SelectedIndex = 0;
         }
     }
 }

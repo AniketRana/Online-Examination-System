@@ -269,6 +269,7 @@
     <Content Include="T_AddQueBankMst.aspx" />
     <Content Include="T_AddQuesDetails.aspx" />
     <Content Include="T_Dashboard.aspx" />
+    <Content Include="T_PaperMst.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +332,13 @@
     </Compile>
     <Compile Include="T_Dashboard.aspx.designer.cs">
       <DependentUpon>T_Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaperMst.aspx.cs">
+      <DependentUpon>T_PaperMst.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T_PaperMst.aspx.designer.cs">
+      <DependentUpon>T_PaperMst.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
