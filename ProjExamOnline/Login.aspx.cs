@@ -46,6 +46,7 @@ namespace ProjExamOnline
                         Session["Email"] = dt.Rows[0]["Email"].ToString();
                         Session["IsTeacher"] = dt.Rows[0]["IsTeacher"].ToString();
                         Session["Name"] = dt.Rows[0]["Name"].ToString();
+                        Session["ID"] = dt.Rows[0]["ID"].ToString();
 
                         if (dt.Rows[0]["IsTeacher"].ToString().ToLower() == "false")
                         {

@@ -75,6 +75,7 @@
     <Content Include="ajax\doc.html" />
     <Content Include="ajax\image.html" />
     <Content Include="ajax\video.html" />
+    <Content Include="ClientError.aspx" />
     <Content Include="css\animate.delay.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-fileupload.min.css" />
@@ -95,6 +96,12 @@
     <Content Include="css\style.stickyheader.css" />
     <Content Include="css\ui.spinner.css" />
     <Content Include="css\uniform.tp.css" />
+    <Content Include="CustomError\css\style.css" />
+    <Content Include="CustomError\index.html" />
+    <Content Include="CustomError\Log\Log_06Aug2020.txt" />
+    <Content Include="CustomError\Log\Log_21Jul2020.txt" />
+    <Content Include="CustomError\Log\Log_24Aug2020.txt" />
+    <Content Include="CustomError\readme.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\Roboto-Black-webfont.svg" />
     <Content Include="fonts\Roboto-BlackItalic-webfont.svg" />
@@ -266,13 +273,26 @@
     <Content Include="prettify\prettify.css" />
     <Content Include="prettify\prettify.js" />
     <Content Include="S_Dashboard.aspx" />
+    <Content Include="S_ExamPaper.aspx" />
+    <Content Include="S_Report.aspx" />
+    <Content Include="S_Test.aspx" />
     <Content Include="T_AddQueBankMst.aspx" />
     <Content Include="T_AddQuesDetails.aspx" />
+    <Content Include="T_AssignPaper.aspx" />
+    <Content Include="T_CreatePaper.aspx" />
     <Content Include="T_Dashboard.aspx" />
     <Content Include="T_PaperMst.aspx" />
+    <Content Include="T_Report.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientError.aspx.cs">
+      <DependentUpon>ClientError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientError.aspx.designer.cs">
+      <DependentUpon>ClientError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,6 +325,27 @@
     <Compile Include="S_Dashboard.aspx.designer.cs">
       <DependentUpon>S_Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="S_ExamPaper.aspx.cs">
+      <DependentUpon>S_ExamPaper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_ExamPaper.aspx.designer.cs">
+      <DependentUpon>S_ExamPaper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="S_Report.aspx.cs">
+      <DependentUpon>S_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_Report.aspx.designer.cs">
+      <DependentUpon>S_Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="S_Test.aspx.cs">
+      <DependentUpon>S_Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S_Test.aspx.designer.cs">
+      <DependentUpon>S_Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Teacher.Master.cs">
       <DependentUpon>Teacher.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -326,6 +367,20 @@
     <Compile Include="T_AddQuesDetails.aspx.designer.cs">
       <DependentUpon>T_AddQuesDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="T_AssignPaper.aspx.cs">
+      <DependentUpon>T_AssignPaper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T_AssignPaper.aspx.designer.cs">
+      <DependentUpon>T_AssignPaper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="T_CreatePaper.aspx.cs">
+      <DependentUpon>T_CreatePaper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T_CreatePaper.aspx.designer.cs">
+      <DependentUpon>T_CreatePaper.aspx</DependentUpon>
+    </Compile>
     <Compile Include="T_Dashboard.aspx.cs">
       <DependentUpon>T_Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,6 +394,13 @@
     </Compile>
     <Compile Include="T_PaperMst.aspx.designer.cs">
       <DependentUpon>T_PaperMst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="T_Report.aspx.cs">
+      <DependentUpon>T_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T_Report.aspx.designer.cs">
+      <DependentUpon>T_Report.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
